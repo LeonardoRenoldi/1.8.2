@@ -1,0 +1,41 @@
+.Titulo {
+  font-family: sans-serif;
+}
+
+.container {
+  display: flex;
+}
+
+.conteudo {
+  width: 80%;
+}
+
+.adicionar {
+  color: black;
+  background-color: greenyellow;
+  cursor: pointer;
+  border-radius: 5px;
+  height: 40px;
+  width: 70px;
+}
+.tarefa {
+  display: flex;
+  gap: 10;
+  border-radius: 5px;
+  border: 1px;
+  padding: 0 10px;
+}
+
+.bts_excluir {
+  height: 40px;
+  width: 70px;
+  background-color: darkred;
+  color: whitesmoke;
+  gap: 10px;
+  border-radius: 5px;
+}
+
+.inputs_all {
+  height: 30px;
+  border-radius: 5px;
+}
