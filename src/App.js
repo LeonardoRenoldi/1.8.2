@@ -1,48 +1,77 @@
-import React from "react";
 import "./styles.css";
+import { useState, useEffect } from "react";
+import React from "react";
 
 export default function App() {
+  const [tarefas, setTarefas] = useState([]);
+  const [inputTarefa, setInputTarefa] = useState("");
+
+  const handleOnSubmit = (e) => e.preventDefault();
+
+  const getEstilos = () => ({
+    display: "flex",
+    gap: 10
+  });
+
+  const handleOnClickAdicionar = () => {
+    const novoArray = tarefas;
+    novoArray.push(inputTarefa);
+    setTarefas([...novoArray]);
+    setInputTarefa("");
+  };
+
+  const handleOnClickExcluir = (index) => {
+    const novasTarefas = tarefas.filter((tarefa, _index) => {
+      return _index !== index;
+    });
+    setTarefas(novasTarefas);
+  };
+
   return (
-    <div className="titulo">
-      <h1>Tarefas</h1>
-      <Form />
-      <List />
-    </div>
-  );
-}
-
-export function Form() {
-  const handleOnSubmit = () => {};
-
-  const [InputTarefas, setTarefas] = React.useState([]);
-
-  return (
-    <div>
-      <span>
-        <form onSubmit={handleOnSubmit}>
-          <label htmlFor="tarefa"></label>
-        </form>
-        <input id="tarefa" name="tarefa" placeholder="Minha Tarefa" />
-      </span>
-      <button className="adicionar">Adicionar</button>
-    </div>
-  );
-}
-
-export function List() {
-  return (
-    <div>
-      <div>
-        <input className="inputs_all Input1" />
-        <button className="bts_excluir Excluir1">Excluir</button>
-      </div>
-      <div>
-        <input className=" inputs_all Input2" />
-        <button className="bts_excluir Excluir2">Excluir</button>
-      </div>
-      <div>
-        <input className="inputs_all Input3" />
-        <button className="bts_excluir Excluir3">Excluir</button>
+    <div className="container">
+      <div className="conteudo">
+        <h1 className="titulo">Tarefas</h1>
+        <div>
+          <form onSubmit={handleOnSubmit}>
+            <div className="tarefa_box">
+              <label htmlFor="tarefa">Tarefa</label>
+              <div style={getEstilos()}>
+                <input
+                  id="tarefa"
+                  name="tarefa"
+                  value={inputTarefa}
+                  onChange={(e) => setInputTarefa(e.target.value)}
+                  placeholder="minha tarefa"
+                />
+                <button
+                  className="btn btn_adicionar"
+                  onClick={handleOnClickAdicionar}
+                >
+                  Adicionar
+                </button>
+              </div>
+            </div>
+          </form>
+          <section>
+            <ul>
+              {tarefas.map((tarefa, index) => (
+                <li>
+                  <input
+                    className="tarefa_conteudo"
+                    disabled
+                    value={tarefa.description}
+                  />
+                  <button
+                    className="btn btn_excluir"
+                    onClick={() => handleOnClickExcluir(index)}
+                  >
+                    Excluir
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </div>
       </div>
     </div>
   );

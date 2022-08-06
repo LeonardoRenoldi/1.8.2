@@ -1,41 +1,70 @@
-.Titulo {
-  font-family: sans-serif;
-}
-
 .container {
   display: flex;
+  justify-content: center;
+}
+
+.titulo {
+  font-family: sans-serif;
 }
 
 .conteudo {
   width: 80%;
 }
 
-.adicionar {
-  color: black;
-  background-color: greenyellow;
+.btn {
+  padding: 10px;
+  background-color: transparent;
+  border-radius: 5px;
   cursor: pointer;
-  border-radius: 5px;
-  height: 40px;
-  width: 70px;
+  min-width: 100px;
 }
-.tarefa {
+
+.btn_adicionar {
+  border: 0.5px solid blue;
+}
+
+.btn_excluir {
+  border: 0.5px solid red;
+}
+
+.btn_adicionar:hover {
+  color: white;
+  background-color: blue;
+}
+
+.btn_excluir:hover {
+  color: white;
+  background-color: red;
+}
+
+.tarefa_box {
   display: flex;
-  gap: 10;
+  flex-direction: column;
+}
+
+#tarefa {
   border-radius: 5px;
-  border: 1px;
+  border: 1px solid gray;
   padding: 0 10px;
 }
 
-.bts_excluir {
-  height: 40px;
-  width: 70px;
-  background-color: darkred;
-  color: whitesmoke;
-  gap: 10px;
+.tarefa_conteudo {
   border-radius: 5px;
+  border: 1px solid gray;
+  padding: 0 10px;
 }
 
-.inputs_all {
-  height: 30px;
-  border-radius: 5px;
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  gap: 10px;
+}
+
+section {
+  margin-top: 10px;
 }
